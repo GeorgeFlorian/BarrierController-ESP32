@@ -1,0 +1,513 @@
+
+/*   Resets - Start   */
+html {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100%;
+    background-color: rgba(20,20,20,0.7);
+    margin: 0; 
+    padding: 0; 
+    font-family: sans-serif;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #BBE5ED;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #BBE5ED;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #BBE5ED;
+}
+/*   Resets - End   */
+
+/*   General CSS for all pages - Start   */
+.logo_container {
+    width: 100%;
+    height: 50px;
+    background: url(logo.png) center no-repeat;
+    background-size: contain;
+    background-color: rgba(0,0,0,0.2);
+    margin: 0;
+    text-align: right;
+}
+
+.box_head {
+    width: 100%;
+    text-align: center;
+}
+
+.title {
+    width: 100%;
+    height: 40px;
+    background-color: #e11422;
+    border-bottom: 1px solid #AB4250;
+    color: white;
+    line-height: 40px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+}
+
+/*text_box_STA is for the index.html*/
+/*tex_box is for the rest of the webpages*/
+.text_box, .text_box_STA { 
+    margin: 10px;
+    overflow: hidden;
+    color:white;
+    font-size: 18px;
+}
+
+.center_box {
+    width: 600px;
+    background: rgba(0,0,0,0.2);
+    margin: 40px auto;
+    text-align: left;
+}
+
+.input_row {
+    width: 100%;
+    height:70px;
+    bottom:0;
+    color: white;
+    position: relative;
+}
+.input_text {
+    position: absolute;
+    bottom:0;
+    width: 587px;
+    height: 30px;
+    float: left;
+    background: rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,1);
+    outline: none;
+    padding-left:10px;
+    color: white;
+    font-size: 18px;
+    z-index: 3; 
+}
+
+.input_text:focus {
+    box-shadow: 0 0 6px rgba(0, 200, 222, 0.25);
+    background-color: rgba(0,0,0,0.5);;
+}
+
+.label_ {
+    position: absolute;
+    opacity: 0;
+    transition: .2s bottom, .2s opacity;
+    bottom:0;
+    /* left: 0; */
+    z-index: 1;
+    font-size: 18px;
+  }
+
+.input_text:focus + .label_ {
+    bottom: 60%;
+    line-height: 1;
+    opacity: 1;
+    margin-left:10px;
+}
+
+.button {
+    width: 90%;
+    height:40px;
+    position: relative;
+    left: 5%;
+    background: none;
+    background-color: #e11422;
+    border:none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 15px 0;
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button:hover, .button:focus,
+.back_button:hover, .back_button:focus,
+.file_input_label:hover, .file_input_label:focus {
+    background-color: #9d0e17;
+    outline: 0;
+}
+
+.input_row .wrong {
+    color: #e11422;
+    font-weight: 700;
+}
+.input_row .correct {
+    color: #14e16d;
+    font-weight: 700;
+}
+/*   General CSS for all pages - End   */
+
+/*   Ap_configPage - Start */
+.top_box {
+    width:600px;
+    background: rgba(0,0,0,0.2);
+    margin:40px auto;
+    text-align: left;
+}
+/*   Ap_configPage - end */
+
+/*  index.html - Start   */
+.top_container {
+    width:850px;
+    /* background: rgba(0,0,0,0.2); */
+    display:flex;
+    margin:40px auto;
+}
+
+.left_container {
+    width:400px;
+    background-color: rgba(0,0,0,0.2);
+    margin-right: 50px;
+}
+
+p {
+    margin: 16px 0px;
+    padding: 3px;
+    text-align: left;
+}
+
+span {
+    margin: 2px;
+    color: cyan;
+}
+
+.version {
+    position:relative;
+    top: 10px;
+    margin: 0;
+    font-size: 12px;
+    color: white;
+    float:right;
+}
+
+.back_button {
+    position: relative;
+    top: 10px;
+    margin: 0;
+    padding: 0;
+    float:left;
+    width: 80px;
+    height: 30px;
+    background: none;
+    background-color: #e11422;
+    border:none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.auth {
+    font-size: 15px;
+}
+
+.right_container {
+    width:400px;
+    background-color: rgba(0,0,0,0.2);
+    float:right;
+}
+.right_container .input_text {
+    width: 387px;
+}
+
+.placeholders {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height: 50px;
+}
+
+.placeholders span {
+    text-align: center;
+}
+
+.placeholders .button {
+    position: static;
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+}
+
+.bottom_container {
+    width: 850px;
+    /* height: 250px; */
+    background: rgba(0,0,0,0.2);
+    margin: 20px auto;
+}
+
+.update_div {
+    position: fixed;
+    right: 2%;
+    bottom: 2%;
+    z-index: 4;
+}
+
+.update_button {
+    width: 200px;
+    height:30px;
+    background: none;
+    background-color: #1489e1;
+    border:none;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    color: white;
+    padding: 5px;
+    /* font-size: 18px; */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.update_button:hover, .update_button:focus {
+    background-color: #0e5e9b;
+    outline: 0;
+}
+/*  index.html - End   */
+
+/* files.html - Start */
+
+.restart_button {
+    width: 200px;
+    height: 30px;
+    background: none;
+    background-color: #e11422;
+    border:none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    margin-bottom:15px;
+    color: white;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.restart_button:hover, .restart_button:focus {
+    background-color: #9d0e17;
+    outline: 0;    
+}
+
+/* files.html - End */
+
+/* Update Page - START */
+.upload_firmware_container {
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.upload_firmware_container form {
+    margin-top: 30px;
+    /* margin-bottom: 10px; */
+    vertical-align: center;
+}
+
+.file_input_label {
+    display:inline-block;
+    width: 200px;
+    height:30px;
+    line-height: 30px;
+    background-color: #e11422;
+    border:none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    margin-right:20px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom:20px;
+}
+
+#files {
+    display: none;
+}
+.upload_button {
+    display:inline-block;
+    width: 200px;
+    height: 30px;
+    background-color: #1489e1;
+    border:none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom:20px;
+}
+
+.upload_button:hover, .upload_button:focus {
+    background-color: #0e5e9b;
+    outline: 0;
+}
+/* Update Page - END */
+
+/* DHCP and Static IP Pages - START */
+
+#dhcpFields {
+    display:none;
+}
+#staticIPfields {
+    display:none;
+}
+
+.input_radio {
+    margin-top: 35px;
+    margin-bottom: 10px;
+    color:white;
+    text-align: center;
+}
+
+.input_radio input {
+    display:none;
+    
+}
+
+.input_radio span{
+    font-size: 20px;
+    color:white;
+}
+.input_radio label {
+    display:inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 45px;
+    height: 45px;
+    width: 150px;
+    background: rgba(0,0,0,0.2);
+}
+
+.input_radio label:hover, .input_radio input[type="radio"]:checked + label {
+    color: red;
+    background-color: rgba(0,0,0,0.5);
+}
+/* DHCP and Static IP Pages - END */
+
+/*Portrait Mode for Mobile Devices*/
+@media screen and (max-width:850px) {
+    /*   Resets - Start   */
+    html {
+        width: 100%;
+    }
+    /*   Resets - End   */
+
+    /*   General CSS for all pages - Start   */
+    .center_box {
+        width:100%;
+        text-align: center; /* used to align static buttons */
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .box_head {
+        margin-bottom: 0px;
+    }
+
+    .title {
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .input_text {
+        width:95%;
+        left:1%;
+    }
+
+    .label_ {
+        left:0;
+    }
+
+    .button {
+        position: static;
+        height: 30px;
+        line-height: 5px;
+        width: 250px;
+        margin: 15px 10px;
+    }
+    /*   General CSS for all pages - End   */
+
+    /*   Ap_configPage - Start */
+    .top_box {
+        width:100%;
+    }
+    /*   Ap_configPage - end */
+
+    /*  index.html - Start   */
+    .top_container {
+        width: 100%;
+        display: inline-block;
+        margin-top: 20px;
+        margin-bottom: 0px;
+    }
+    .left_container {
+        width: 100%;
+    }
+    .left_container .text_box_STA {
+        font-size: 15px;
+    }
+
+    p {
+        margin: 1px;
+    }
+    .right_container {
+        width: 100%;
+        text-align: center; /*used to center align the static buttons*/
+    }
+
+    .right_container .input_text, .right_container .input_row, .right_container .label_ {
+        font-size:15px;
+    }
+    .right_container .input_row {
+        height: 50px;
+    }
+    .right_container .input_text {
+        width: 95%;
+        height:20px;
+    }
+
+    .right_container .button {
+        font-size: 16px;
+    }
+
+    .placeholders span {
+        font-size: 12px;
+    }
+    
+    .bottom_container {
+        width:100%;
+    }
+    
+    .bottom_container .text_box {
+        font-size: 15px;
+    }
+    /*  index.html - End   */
+
+    /*update_page.html - START */
+    .file_input_label {
+        width:35%;
+    }
+    .upload_button {
+        width:35%;
+    }
+    /*update_page.html - END */
+}

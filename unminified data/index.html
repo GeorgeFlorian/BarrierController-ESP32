@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>    
+<head>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <!-- Chrome, Firefox OS and Opera -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=476mA4zprB">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=476mA4zprB">
+    <link rel="shortcut icon" href="/favicon.ico?v=476mA4zprB">
+    <!-- Tab Color iOS Safari -->
+    <meta name="apple-mobile-web-app-title" content="Metrici.ro">
+    <meta name="application-name" content="Metrici.ro">
+    <!-- Tab Color Android Chrome -->
+    <meta name="theme-color" content="#e11422">
+
+    <link rel = "stylesheet" type = "text/css" href = "newMaster.css">
+    <title>Home Page</title>
+    <script type="text/javascript" src="jquery-1.12.4.min.js"></script>
+</head>
+
+<body>
+    <div class = "logo_container"> <img url="/logo.png">
+        <span class = "version">Relay Controller</br>Version: %PH_Version%</span>
+    </div>
+    <div class = "top_container">
+        <div class = "left_container">
+            <div class = "box_head"> <div class = "title"> <h1>Current Settings</h1> </div> </div>
+            <div class = "text_box_STA">
+                <p>%PLACEHOLDER_Relay1%: <span class = "relay_status1">%PLACEHOLDER_Status1%</span></p>
+                <p>Timer 1: <span>%PLACEHOLDER_Timer1%</span>(s)</p>
+                <p>%PLACEHOLDER_Relay2%: <span class = "relay_status2">%PLACEHOLDER_Status2%</span></p>
+                <p>Timer 2: <span>%PLACEHOLDER_Timer2%</span>(s)</p>
+                <p class = "auth">/ON URL for %PLACEHOLDER_Relay1% : <span>http://%PH_Auth%%PH_IP_Addr%/relay1/on</span></p>                
+                <p class = "auth">/OFF URL for %PLACEHOLDER_Relay1% : <span>http://%PH_Auth%%PH_IP_Addr%/relay1/off</span></p>
+                <p class = "auth">/ON URL for %PLACEHOLDER_Relay2% : <span>http://%PH_Auth%%PH_IP_Addr%/relay2/on</span></p>
+                <p class = "auth">/OFF URL for %PLACEHOLDER_Relay2% : <span>http://%PH_Auth%%PH_IP_Addr%/relay2/off</span></p>
+            </div>
+        </div>
+        <div class = "right_container">
+            <div class = "box_head"> <div class = "title"> <h1>Change Settings</h1> </div> </div>
+            <form method="post">
+                <div class ="input_row">
+                    <input class="input_text" id="getRelay1" type="text" placeholder="Enter Relay1 custom name" name="getRelay1" value="" title="Please enter first relay's custom name !">
+                    <label class="label_" for="getRelay1">First Relay's Name</label>
+                </div>
+                <div class ="input_row">
+                    <input  class="Delay1 input_text" id="getDelay1" inputmode="numeric" type="text" maxlength="2" pattern="([0-9]{1,2})"
+                            oninvalid="this.setCustomValidity('Please enter a number between 5 and 99')"
+                            onchange="try{setCustomValidity('')}catch(e){}"
+                            oninput="setCustomValidity(' ')"
+                            placeholder="Enter Timer1 for Relay1 (5-99)" name="getDelay1" value="" title="Enter the amount of time the barrier will stay open until it closes">
+                    <label class="label_" for="getDelay1">Timer 1</label>
+                </div>
+                <div class ="input_row">
+                    <input class="input_text" id="getRelay2" type="text" placeholder="Enter Relay2 custom name" name="getRelay2" value="" title="Please enter second relay's custom name !">
+                    <label class="label_" for="getRelay2">Second Relay's Name</label>
+                </div>
+                <div class ="input_row">
+                    <input  class="Delay2 input_text" id="getDelay2" class="Delay2" inputmode="numeric" type="text" maxlength="2" pattern="([0-9]{1,2})"
+                            oninvalid="this.setCustomValidity('Please enter a number between 5 and 99')"
+                            onchange="try{setCustomValidity('')}catch(e){}"
+                            oninput="setCustomValidity(' ')"
+                            placeholder="Enter Timer2 for Relay2 (5-99)" name="getDelay2" value="" title="Enter the amount of time the barrier will stay open until it closes">
+                    <label class="label_" for="getDelay2">Timer 2</label>        
+                </div>
+                <input class="button" type="submit" name="save_values" value="Save Values">
+            </form>
+            <div class = "placeholders">
+                <span>%PLACEHOLDER_Relay1%</span>
+                <form method="post">
+                    <input class="button" name="relay1_on" type="submit" value="/on">
+                    <input class="button" name="relay1_off" type="submit" value="/off">
+                </form>
+            </div>
+            <div class ="placeholders">
+                <span>%PLACEHOLDER_Relay2%</span>
+                <form method="post">
+                    <input class="button" name="relay2_on" type="submit" value="/on">
+                    <input class="button" name="relay2_off" type="submit" value="/off">
+                </form>
+            </div>
+            <form method="post">
+                <input class="button" name="ip_settings" type="submit" value="Go to Network Configuration">
+                <input class="button" name="import_export" type="submit" value="Import/Export Data">
+            </form>
+        </div>
+    </div>
+    <div class = "bottom_container">
+            <div class = "box_head"> <div class = "title"> <h1>Logs</h1> </div> </div>
+            <div class = "text_box">%PLACEHOLDER_LOGS%</div>
+        </div>
+    <div class = "update_div">
+        <form method="POST">
+            <input class = "update_button" type="submit" name="goUpdate" value="Go to Update Page" />
+        </form>
+    </div>
+</body>
+<script>
+    $(document).ready( function(){
+    $('.text_box').load('events_placeholder.html');
+    $('.relay_status1').load('relay_status1.html');
+    $('.relay_status2').load('relay_status2.html');
+    refresh();
+    });
+    
+    function refresh(){
+        setTimeout( function() {
+            $('.text_box').load('events_placeholder.html');
+            $('.relay_status1').load('relay_status1.html');
+            $('.relay_status2').load('relay_status2.html');
+            refresh();
+        }, 1000);
+    }
+</script>
+
+<script>
+$( document ).ready(function() {
+    $('.Delay1').change(function() {
+        var m = $('.Delay1').val();          
+        if (m > 99)
+            $('.Delay1').val(99);
+    });
+    $('.Delay2').change(function() {
+        var n = $('.Delay2').val();          
+        if (n > 99)
+            $('.Delay2').val(99);
+    });
+});
+</script>
+</html>
+

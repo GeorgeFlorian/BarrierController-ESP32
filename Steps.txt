@@ -1,0 +1,43 @@
+Setting up the software:
+
+1. Download Visual Studio Code: https://code.visualstudio.com/download
+2. Open Visual Studio Code
+3. Open VSC's Extension Manager
+4. Search for official PlatformIO IDE extension
+5. Install PlatformIO IDE
+6. Press CTRL+SHIFT+E. This will show the File Explorer
+7. In the Explorer you will find the Workspace where you will have to add the folder
+
+How to monitor the code:
+
+1. By default, the Verbose Debug level is set. This means that you will get all of the debug messages.
+2. On the bottom side of Visual Studio Code there should be a blue bar with PlatformIO options. Look for "PlatformIO: Serial Monitor". Click on it. It may not work on the first try and you would have to click on it again. This will prompt a pop-up message asking you to "Terminate Task" or to "Restart Task". Press on "Restart Task";
+3. Note that the Serial Monitor will only begin when you start it. It will not record anything before starting it. This means that it's better to open the Serial Monitor first and then upload the code.
+
+How to upload code and data to the ESP32:
+
+1. Get "Barrier_Controller" folder from storage
+2. Add the folder to the workspace by drag and drop or by right clicking and pressing on "Add Folder to Workspace" and navigate to the location of the foler.
+3. Navigate to the left-side menu and open "platformio.ini".
+4. Modify "upload_port" and "monitor_port" to match the port to which the ESP32 has connected to your PC.
+https://docs.espressif.com/projects/esp-idf/en/latest/get-started/establish-serial-connection.html
+4.1. On LINUX:
+    - First check the available devices before connecting the ESP32 with the command: "ls /dev/tty*"
+    - Then connect the ESP32 and type the command again "ls /dev/tty*" and check for the new device.
+    - The name should look something like "/dev/ttyUSB0"
+    - Next, the currently logged user should have read and write access the serial port over USB. You can do this with the following command: "sudo usermod -a -G dialout $USER"
+    - Make sure you re-login to enable read and write permissions for the serial port.
+4.2. On WINDOWS:
+    - Check the list of identified COM ports in the Windows Device Manager.
+    - Disconnect ESP32 and connect it back, to verify which port disappears from the list and then shows back again.
+    - These can look like "Silicon Labs CP210x USB to UART bridge(COM 3)" or "USB Serial Port (COM 6)"
+5. Click on "src" folder then on "main.cpp". This will open the code to be uploaded.
+6. To upload the code hit CTRL+ALT+U. This should end in a SUCCESS message and "Terminal will be reused by tasks, press any key to close it." If not, try again.
+7. Click on the terminal then press any key until the PlatformIO's command line shows up
+8. To upload the data enter in terminal: "pio run -t uploadfs" without quotation marks ("") and hit enter. This should end in a SUCCESS message and "Terminal will be reused by tasks, press any key to close it." If not, try again.
+
+Sending updates to the client:
+
+1. Enter "New - vX.X - DayMonthYear" folder.
+2. Send the files inside.
+3. If "spiffs.bin" file is also in the folder, please notify the client that all of their current settings will be deleted (this is also written on the device Update page).

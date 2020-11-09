@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>    
+<head>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <!-- Chrome, Firefox OS and Opera -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!-- Tab Color iOS Safari -->
+    <meta name="apple-mobile-web-app-title" content="Metrici.ro">
+    <meta name="application-name" content="Metrici.ro">
+    <!-- Tab Color Android Chrome -->
+    <meta name="theme-color" content="#e11422">
+    
+    <link rel = "stylesheet" type = "text/css" href = "newMaster.css">   
+    <title>IP Config</title>
+    <script type="text/javascript" src="jquery-1.12.4.min.js"></script>
+</head>
+    
+<body>
+    <div class="logo_container">
+        <button class="back_button" onclick="goBack()">Go Back</button>
+        <img url="/logo.png">
+        <span class = "version">Relay Controller</br>Version: %PH_Version%</span>
+    </div>
+    <div class="top_box">
+            <div class = "box_head">
+                    <div class = "title"><h1>Available Networks</h1></div>
+                </div>
+        <div class = "text_box">%PLACEHOLDER_NETWORKS%</div>
+    </div>
+
+    <div class="center_box">
+        <div class = "box_head">               
+            <div class = "title"><h1>Setup - Network</h1></div>
+        </div>
+        <form method = "post" action="/dhcpIP">
+            <input class = "button" type="submit" name="dhcp" value="DHCP IP" title="Redirect to DHCP IP Config page">
+            <input class = "button" type="submit" name="static" value="Static IP" title="Redirect to Static IP Config page" formaction="/staticIP">
+        </form>
+    </div>    
+</body>  
+<script>
+    $(document).ready( function(){
+    $('.text_box').load('networks_placeholders.html');
+    refresh();
+    });
+    
+    function refresh(){
+        setTimeout( function() {
+            $('.text_box').load('networks_placeholders.html');
+            refresh();
+        }, 10000);
+    }
+</script>
+<script>
+    function goBack() {
+    window.history.back();
+    }
+</script>
+</html>
